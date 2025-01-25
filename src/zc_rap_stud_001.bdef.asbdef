@@ -1,0 +1,17 @@
+projection implementation in class ZBP_C_RAP_STUD_001 unique;
+strict ( 2 );
+use draft;
+
+define behavior for ZC_RAP_STUD_001 alias student
+{
+  use create;
+  use update;
+  use delete;
+
+  use action setAdmit;
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+}

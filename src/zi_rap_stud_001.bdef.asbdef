@@ -1,0 +1,37 @@
+managed implementation in class zbp_i_rap_stud_001 unique;
+strict ( 2 );
+with draft;
+define behavior for ZI_RAP_STUD_001 alias Student
+persistent table ztab_student_001
+draft table ztab_stud_001_d
+lock master total etag lastchangedat
+authorization master ( instance )
+etag master locallastchangedat
+{
+  create;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) Id;
+
+  action ( features : instance ) setAdmit result[1] $self;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ztab_student_001
+    {
+      Id                 = id;
+      Firstname          = firstname;
+      Lastname           = lastname;
+      age                = age;
+      course             = course;
+      courseduration     = courseduration;
+      status             = status;
+      gender             = gender;
+      dob                = dob;
+      lastchangedat      = lastchangedat;
+      locallastchangedat = locallastchangedat;
+    }
+}
